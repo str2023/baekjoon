@@ -13,15 +13,18 @@
 # 출력
 # 오른쪽에서 N개의 막대기를 보았을 때, 보이는 막대기의 개수를 출력한다.
 
+import sys
+input = sys.stdin.readline
+
 n = int(input())
-see = []
+see = [0]
 
 for i in range(n):
-    h = int(input())
-    if h in see:
-        see = see[:see.index(h)+1]
+    stick = int(input())
+    if see[i] <= stick and i > 0 :
+        see[i] = stick
     else:
-        see.append(h)
+        see.append(stick)
+print(see.index(max(see)))
 
-
-print(len(see))
+# print(len(see))

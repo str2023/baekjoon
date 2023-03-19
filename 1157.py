@@ -9,16 +9,19 @@
 # 첫째 줄에 이 단어에서 가장 많이 사용된 알파벳을 대문자로 출력한다. 단, 가장 많이 사용된 알파벳이 여러 개 존재하는 경우에는 ?를 출력한다.
 
 s = input().upper()
+# 대문자 변환
 count = {}
+# 딕셔너리 선언
 for i in s:
     if i in count:
         count[i] += 1
     else:
         count[i] = 1
-
+# 알파벳 카운팅
 count = sorted(count.items(),key=lambda x:x[1],reverse=True)
-
+# 카운트 값을 기준으로 내림차 정렬
 if len(count)>1 and count[0][1] == count[1][1]:
     print("?")
 else:
     print(count[0][0])
+# 출력

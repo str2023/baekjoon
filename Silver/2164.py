@@ -28,5 +28,4 @@ if n > 1:   # n이 1이상일 때 2의 거듭제곱부터 2씩 커짐
         elif n < key: 
             rest = key - 2 * (key - n)
             break
-    
 print(rest)

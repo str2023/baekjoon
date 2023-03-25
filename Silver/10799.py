@@ -26,20 +26,22 @@
 # 출력
 # 잘려진 조각의 총 개수를 나타내는 정수를 한 줄에 출력한다.
 
-floor = 0
 result = 0
+stack = []
+prev = ''
+
 ps = input()
-tmp = ''
-while '()' in ps:
-    index = ps.find('()')
-    tmp = ps[:index]
-    ps = ps[index+2:]
-    print(ps)
-    if index > 0:
-        floor += tmp.count('(')
-        floor -= tmp.count(')')
-        result += tmp.count(')')
-    result += floor
-result += ps.count(')')
+for p in ps:
+    if p == '(':
+        stack.append(p)
+        prev = p
+    else:
+        if prev == '(':
+            stack.pop()
+            result += len(stack)
+            prev = p
+        else:
+            stack.pop()
+            result += 1
 
 print(result)

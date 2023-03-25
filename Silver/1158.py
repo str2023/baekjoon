@@ -17,14 +17,11 @@
 n, k = map(int, input().split())
 circle = list(range(1, n+1))
 index = 0
-count = 1
-result = []
-while index != len(circle):
-    if count == k:
-        result.append(str(circle[index]))
-        count = 1
-    else:
-        circle.append(circle[index])
-        count += 1
-    index += 1
-print('<'+', '.join(result)+'>')
+result = '<'
+
+for i in range(n):
+    index = (index + k - 1) % len(circle)
+    result += str(circle.pop(index))+', '
+
+result = result.rstrip(', ') + '>'
+print(result)

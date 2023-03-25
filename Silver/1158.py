@@ -20,7 +20,7 @@ index = 0
 result = '<'
 
 for i in range(n):
-    index = (index + k - 1) % len(circle)
+    index = (index + k - 1) % len(circle) # 제거할 인덱스
     result += str(circle.pop(index))+', '
 
 result = result.rstrip(', ') + '>'

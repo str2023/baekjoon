@@ -43,5 +43,22 @@ for p in ps:
         else:
             stack.pop()
             result += 1
+ print(result)
 
-print(result)
+
+# floor = 0
+# result = 0
+# ps = input()
+# tmp = ''
+# while '()' in ps:
+#     index = ps.find('()')
+#     tmp = ps[:index]
+#     ps = ps[index+2:]
+#     if index > 0:
+#         floor += tmp.count('(')
+#         floor -= tmp.count(')')
+#         result += tmp.count(')')
+#     result += floor
+# result += ps.count(')')
+
+# print(result)

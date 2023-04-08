@@ -43,7 +43,7 @@ for p in ps:
         else:
             stack.pop()
             result += 1
- print(result)
+print(result)
 
 
 # floor = 0

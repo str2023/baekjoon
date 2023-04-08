@@ -25,26 +25,21 @@ import sys
 input = sys.stdin.readline
 
 
-def DFS(graph, R, count, visited):
-    visited[R-1] = count  # 정점 i의 방문 순서 기록
+def DFS(graph, R, visited):
     stack = [R]         # 스택-반복문 이용
-
-    while stack:                    # 스택이 빌 때까지 반복
-        for i in graph[stack[-1]]:  # 스택 최상단의 인접 정점 순회
-            if visited[i-1] == 0:     # 방문하지 않았다면,
-                stack.append(i)     # 스택에 넣고
-                count += 1          # 몇번째 방문인지 기입
-                visited[i-1] = count
-                break
-            elif i == graph[stack[-1]][-1]:
-                stack.pop()         # 방문하지 않은 정점이 없다면 스택에서 꺼내기
+    count = 0
+    while stack:                      # 스택이 빌 때까지 반복
+        node = stack.pop()            # 스택 최상단에서 정점 꺼냄
+        if visited[node-1] == 0:      # 방문하지 않았다면,
+            count += 1                # 몇번째 방문인지 
+            visited[node-1] = count   # 기입
+            stack.extend(graph[node]) # 인접 정점 스택에 넣음
 
     return visited
 
 
 N, M, R = map(int, input().split())
 
-count = 1   # 방문순서 초기화
 visited = [0] * N # 방문 기록 초기화
 graph = [[] for _ in range(N+1)]    # 2차원 배열 초기화
 
@@ -54,8 +49,8 @@ for i in range(M):
     graph[v].append(u)
 
 for i in range(N+1):
-    graph[i].sort()
+    graph[i].sort(reverse=True)
 
-result = DFS(graph, R, count, visited)
+result = DFS(graph, R, visited)
 
 print(*result, sep="\n")

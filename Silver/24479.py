@@ -49,7 +49,7 @@ for i in range(M):
     graph[v].append(u)
 
 for i in range(N+1):
-    graph[i].sort(reverse=True)
+    graph[i].sort(reverse=True) # 오름차순으로 방문하므로 내림차 정렬
 
 result = DFS(graph, R, visited)
 
